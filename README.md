@@ -52,12 +52,26 @@ OpenFlow is built around this sequence:
 8. **Render final video**
    - export a vertical or horizontal MP4
 
+## Screenshots
+
+### Character passport reference
+
+![Yoav passport reference](assets/screenshots/yoav-passport.png)
+
+### Example generated scenes
+
+![Scene 1](assets/screenshots/scene-1.png)
+![Scene 3](assets/screenshots/scene-3.png)
+![Scene 5](assets/screenshots/scene-5.png)
+
 ## Repository structure
 
 ```text
 OpenFlow/
 ├── SKILL.md
 ├── README.md
+├── assets/
+│   └── screenshots/
 ├── references/
 │   ├── kling-kie.md
 │   ├── prompt-patterns.md
