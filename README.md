@@ -33,7 +33,9 @@ when a recurring character is needed, the workflow creates a clean passport-styl
 
 OpenFlow is built around this sequence:
 
-1. **Plan the video**
+1. **Spark ideation first**
+   - use the `creative-seeds` companion skill internally to break stale pattern-thinking before story and scene design
+2. **Plan the video**
    - define goal, duration, aspect ratio, tone, and scene list
 2. **Create a recurring character reference if needed**
    - generate a white-background passport-style identity image first
@@ -180,6 +182,8 @@ This repository is best viewed as:
 
 It is not meant to be a full commercial SaaS or standalone GUI app.
 It is the workflow layer that teaches an agent how to orchestrate the moving parts.
+
+OpenFlow now also assumes a creative pre-ideation step powered by the companion `creative-seeds` skill, which helps break repetitive AI pattern-thinking before scene design.
 
 ## Recommended next upgrades
 

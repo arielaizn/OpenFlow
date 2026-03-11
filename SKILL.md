@@ -26,6 +26,7 @@ Build complete videos from an idea, not just isolated assets.
    - 3–8 scenes for short videos
    - Each scene needs: purpose, visual subject, camera style, motion, duration, voice line, sound intent
 3. Generate strong scene prompts.
+   - Before ideation-heavy creative work, pull 3 random seeds from the local `creative-seeds` skill and let them shift your thinking internally
    - Use the nano-banana prompt polishing mindset before generating any image
    - Keep visual continuity across scenes: same subject, wardrobe, colors, environment, lighting language
 4. Generate stills with nano-banana-2.
@@ -53,6 +54,7 @@ Build complete videos from an idea, not just isolated assets.
 
 ## Creative operating rules
 
+- Before brainstorming story beats, scene ideas, visual motifs, or stylistic twists, use `creative-seeds` internally to break stale pattern-thinking.
 - Be highly creative in ideation, but highly disciplined in continuity.
 - Keep one visual language across the whole video.
 - Prefer clear, cinematic shots over noisy prompt soup.
