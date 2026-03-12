@@ -42,8 +42,10 @@ For hard-gated jobs, require these artifacts before delivery:
    - Duration target: usually 10–60 seconds unless the user says otherwise
    - Aspect ratio: 9:16 for vertical, 16:9 for landscape, 1:1 for square
 2. Break the idea into scenes.
-   - 3–8 scenes for simpler short videos; use more shots/segments when the goal is a denser, more kinetic cut
+   - 3–8 scenes for simpler short videos; use many more shots/segments when the goal is a denser, more kinetic cut
+   - Do not calculate shot count by simply dividing runtime by raw 5-second clip length
    - Separate raw generated shot duration from final used timeline duration
+   - For energetic ads and promos, prefer generating more raw shots than the final runtime would suggest, then trimming each raw shot down to its strongest ~3 seconds in the final cut
    - Each scene needs: purpose, visual subject, camera style, motion, duration, voice line, sound intent
 3. Generate strong scene prompts.
    - Before ideation-heavy creative work, pull 3 random seeds from the local `creative-seeds` skill and let them shift your thinking internally
