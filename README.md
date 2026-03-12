@@ -86,14 +86,14 @@ Remotion can still be used intentionally, but it is no longer the default path.
 
 ## Real generated outputs
 
-These are real outputs produced through the workflow on the server:
+These are real outputs produced through the workflow on the server and committed into this repo as video files:
 
-- **KorKola 30s ad** — <https://drive.google.com/file/d/1_aHbK6EQDTOATJNaLgTkHckfFh_9Gizt/view?usp=drivesdk>
-- **Abigail rebuild with Hebrew subtitles** — <https://drive.google.com/file/d/144SokuiAwAq0nIkrUlhFimhBTeoH03dN/view?usp=drivesdk>
-- **Red Bull-inspired F1 ad v1** — <https://drive.google.com/file/d/1OfepqfM2YgU4grhxEszvA8YT5JIRed_0/view?usp=drivesdk>
-- **Red Bull-inspired F1 ad v2** — <https://drive.google.com/file/d/171oiPDP52upOWbi9PE8PA5oDNLa01snj/view?usp=drivesdk>
-- **Red Bull-inspired F1 ad v3** — <https://drive.google.com/file/d/1BKlanQvf7eDfBqT-Y0DWhv58J3d65rXZ/view?usp=drivesdk>
-- **Swarovski-inspired jewelry ad** — <https://drive.google.com/file/d/1q2_sA1UbsfUb6HlnG57PqVaNV8tMkIn3/view?usp=drivesdk>
+- **KorKola 30s ad** — [assets/videos/korkola-30s.mp4](assets/videos/korkola-30s.mp4)
+- **Abigail rebuild with Hebrew subtitles** — [assets/videos/abigail-hebrew-subs.mp4](assets/videos/abigail-hebrew-subs.mp4)
+- **Red Bull-inspired F1 ad v1** — [assets/videos/redbull-f1-v1.mp4](assets/videos/redbull-f1-v1.mp4)
+- **Red Bull-inspired F1 ad v2** — [assets/videos/redbull-f1-v2.mp4](assets/videos/redbull-f1-v2.mp4)
+- **Red Bull-inspired F1 ad v3** — [assets/videos/redbull-f1-v3.mp4](assets/videos/redbull-f1-v3.mp4)
+- **Swarovski-inspired jewelry ad** — [assets/videos/swarovski-jewelry-45s.mp4](assets/videos/swarovski-jewelry-45s.mp4)
 
 ## Example outputs
 
