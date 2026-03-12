@@ -66,12 +66,30 @@ OpenFlow is built around this sequence:
 ![Scene 3](assets/screenshots/scene-3.png)
 ![Scene 5](assets/screenshots/scene-5.png)
 
+
+## Companion skills
+
+This repo now ships with companion quality-control skills that are meant to be used alongside OpenFlow:
+
+- `video-editing-director` — editing judgment for cuts, pacing, trim points, and scene order
+- `openflow-requirements-guard` — requirement checklist / gatekeeper for user-mandated workflow steps
+- `remotion-preflight-review` — pre-render inspection before final export
+- `video-delivery-auditor` — post-render evidence-based QA before claiming completion
+
+Packaged `.skill` files for these companions are included under `dist/`.
+
 ## Repository structure
 
 ```text
 OpenFlow/
 ├── SKILL.md
 ├── README.md
+├── dist/
+│   ├── kie-video-studio.skill
+│   ├── video-editing-director.skill
+│   ├── video-delivery-auditor.skill
+│   ├── remotion-preflight-review.skill
+│   └── openflow-requirements-guard.skill
 ├── assets/
 │   └── screenshots/
 ├── references/
@@ -110,6 +128,12 @@ A minimal ElevenLabs speech helper for generating narration audio files.
 
 ### `scripts/remotion_bootstrap.sh`
 Bootstraps a minimal Remotion project for timeline assembly and local rendering.
+
+
+### `dist/`
+Packaged `.skill` artifacts ready to install or publish:
+- the updated `kie-video-studio.skill`
+- the companion QA / editing skills bundled with this repo
 
 ## Confirmed working pieces
 

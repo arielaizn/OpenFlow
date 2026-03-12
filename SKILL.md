@@ -16,6 +16,14 @@ description: >-
 
 Build complete videos from an idea, not just isolated assets.
 
+## Companion skills
+
+Use these companion skills alongside this one when relevant:
+- `openflow-requirements-guard` at job start when the user gives mandatory steps or quality bars.
+- `video-editing-director` before timeline assembly so the edit has intentional cuts and pacing.
+- `remotion-preflight-review` immediately before final render.
+- `video-delivery-auditor` immediately before claiming the video is done.
+
 ## Core workflow
 
 1. Decide the output format first.
@@ -48,14 +56,19 @@ Build complete videos from an idea, not just isolated assets.
    - Keep narration aligned to scene timing
 7. Add music only if requested or clearly useful.
    - If the user asks for matching music, either source it or generate it through the configured music path (for example Suno via Kie if available)
+   - Treat music as incomplete until it is actually wired into the edit/timeline, not just saved as a file
 8. Assemble everything in Remotion.
    - Build a timeline with clips, voice, music, timing, and simple transitions
    - Export a final MP4 and any requested caption/subtitle variants
+   - Run a real preflight review before final render; do not skip from "assets exist" to delivery
+   - If the user explicitly asked for real animation, do not treat a Remotion still-motion / Ken Burns style fallback as equivalent completion; only count the animation requirement as satisfied when actual animated clips were produced by Kling or another real animation stage
 
 ## Creative operating rules
 
 - Before brainstorming story beats, scene ideas, visual motifs, or stylistic twists, use `creative-seeds` internally to break stale pattern-thinking.
 - Be highly creative in ideation, but highly disciplined in continuity.
+- Be honest about what was actually done; if Voice Design or music-in-edit were requested, verify them before claiming success.
+- When the user asks for true animation, be explicit with yourself about the difference between animated clips and still-image motion effects; do not blur that distinction in status updates or final delivery language.
 - Keep one visual language across the whole video.
 - Prefer clear, cinematic shots over noisy prompt soup.
 - When the user gives a loose concept, invent the shot design yourself.
@@ -108,6 +121,7 @@ Keep edits clean and fast:
 - hard cuts first
 - gentle fades only when they add value
 - do not overuse flashy transitions
+- decide trims and cut points intentionally; do not just drop full clips into the timeline unchanged
 
 ## Music rules
 
@@ -116,6 +130,7 @@ If the video would benefit from music, add it proactively unless the user says n
 - keep music supportive, not dominant over narration
 - if using generated music, request instrumental unless vocals are explicitly wanted
 - match BPM/energy to the pacing of the scenes
+- after adding music, verify it is present in the composition/timeline before delivery
 
 ## Deliverables
 
