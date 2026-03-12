@@ -73,7 +73,7 @@ This repo now ships with companion quality-control skills that are meant to be u
 
 - `video-editing-director` — editing judgment for cuts, pacing, trim points, and scene order
 - `openflow-requirements-guard` — requirement checklist / gatekeeper for user-mandated workflow steps
-- `remotion-preflight-review` — pre-render inspection before final export
+- `remotion-preflight-review` — pre-render inspection before final export (ffmpeg-first or Remotion when intentionally used)
 - `video-delivery-auditor` — post-render evidence-based QA before claiming completion
 
 Packaged `.skill` files for these companions are included under `dist/`.
@@ -237,3 +237,6 @@ OpenFlow turns a vague video request into a structured pipeline:
 idea → scenes → images → animation → voice → music → Remotion → final render.
 
 If you are building agent-driven content workflows inside OpenClaw, this repo is a strong starting point.
+
+
+Editing/rendering now defaults to ffmpeg-based assembly instead of Remotion-first assembly.

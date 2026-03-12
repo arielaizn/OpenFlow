@@ -2,14 +2,14 @@
 name: kie-video-studio
 description: >-
   Create full short-form videos from scratch using Kie.ai image/video/music models,
-  ElevenLabs voice generation, and Remotion editing on the server. Use when the
+  ElevenLabs voice generation, and ffmpeg-based editing/rendering on the server. Use when the
   user asks to create a full video, ad, teaser, reel, explainer, trailer,
   music-backed short, or talking/voice-led visual pipeline from an idea or script.
   Especially use when the workflow should turn a rough concept into a shot list,
   generate polished prompts for nano-banana-2 image creation, animate scenes with
   Kling via Kie.ai, generate narration and sound with ElevenLabs, optionally
   source or generate music including Suno/Kie when available, and assemble the
-  final edit with Remotion.
+  final edit with ffmpeg.
 ---
 
 # Kie Video Studio
@@ -21,7 +21,7 @@ Build complete videos from an idea, not just isolated assets.
 Use these companion skills alongside this one when relevant:
 - `openflow-requirements-guard` at job start when the user gives mandatory steps or quality bars.
 - `video-editing-director` before timeline assembly so the edit has intentional cuts and pacing.
-- `remotion-preflight-review` immediately before final render.
+- `remotion-preflight-review` immediately before final render if a Remotion project is intentionally used; otherwise run the local ffmpeg preflight script before render.
 - `video-delivery-auditor` immediately before claiming the video is done.
 
 For hard-gated jobs, require these artifacts before delivery:
@@ -69,12 +69,13 @@ For hard-gated jobs, require these artifacts before delivery:
    - In this environment, prefer Kie music generation with model `V5`, `customMode: true`, and `instrumental: true` unless vocals were explicitly requested
    - Treat music as incomplete until it is actually wired into the edit/timeline, not just saved as a file
    - Re-check narration timing after music is chosen; if the ending feels under-voiced, shorten the cut or redistribute/add narration instead of leaving dead air by accident
-8. Assemble everything in Remotion.
-   - Build a timeline with clips, voice, music, timing, and simple transitions
-   - Export a final MP4 and any requested caption/subtitle variants
+8. Assemble everything with ffmpeg by default.
+   - Build a timeline config with clips, trims, voice, music, timing, and simple transitions
+   - Use `scripts/ffmpeg_preflight.py <project-dir>` before final render
+   - Use `scripts/ffmpeg_assemble.py <project-dir>` to render the final MP4 and any requested subtitle burn-in variant
    - Run a real preflight review before final render; do not skip from "assets exist" to delivery
    - For strict workflows, do not render until `delivery-checklist.md`, `edit-plan.md`, and `preflight-report.md` exist and the preflight checks pass
-   - If the user explicitly asked for real animation, do not treat a Remotion still-motion / Ken Burns style fallback as equivalent completion; only count the animation requirement as satisfied when actual animated clips were produced by Kling or another real animation stage
+   - If the user explicitly asked for real animation, do not treat a still-motion / Ken Burns style fallback as equivalent completion; only count the animation requirement as satisfied when actual animated clips were produced by Kling or another real animation stage
 
 ## Creative operating rules
 
@@ -119,16 +120,16 @@ If a character/product/place recurs across scenes:
 - repeat camera/lens language when needed
 - avoid introducing new props unless the story requires them
 
-## Remotion rules
+## ffmpeg assembly rules
 
-Use Remotion for assembly, not for inventing the story.
+Use ffmpeg for assembly by default, not for inventing the story.
 
-The Remotion stage should:
-- place clips on a timeline
+The assembly stage should:
+- place clips on a timeline via config/segment metadata
 - add voiceover
 - add music bed
 - control cuts and simple transitions
-- optionally burn captions
+- optionally burn captions/subtitles
 - render the final deliverable
 
 Keep edits clean and fast:
@@ -148,7 +149,7 @@ If the video would benefit from music, add it proactively unless the user says n
 - keep music supportive, not dominant over narration
 - if using generated music, request instrumental unless vocals are explicitly wanted
 - match BPM/energy to the pacing of the scenes
-- after adding music, verify it is present in the composition/timeline before delivery
+- after adding music, verify it is present in the final timeline/render config before delivery
 - after music is in the edit, check the last 10-15 seconds for narration drop-off; shorten or rewrite the ending structure if the close feels empty
 
 ## Deliverables
@@ -174,7 +175,8 @@ Optional deliverables:
 Use these bundled resources when doing the work:
 - `scripts/kie_job_client.py` — generic Kie.ai create/poll helper for any model
 - `scripts/elevenlabs_tts.py` — ElevenLabs speech generator
-- `scripts/remotion_bootstrap.sh` — scaffold a minimal Remotion project in a target folder
+- `scripts/ffmpeg_preflight.py` — validate timeline segments, trims, and required audio inputs before render
+- `scripts/ffmpeg_assemble.py` — build trimmed segment files, stitch them, mix narration/music, burn subtitles when requested, and render final MP4
 - `references/workflow.md` — detailed decision flow for full video creation
 - `references/prompt-patterns.md` — prompt patterns for scene, motion, narration, and music intent
 - `references/kling-kie.md` — confirmed Kie.ai Kling model name, create/poll flow, and currently known payload limits

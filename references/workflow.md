@@ -35,9 +35,10 @@ For each scene:
 - upload the still to a temporary public URL first
 - use that URL as the scene reference image
 - write a dedicated animation prompt focused on camera movement, motion, and pacing
-- default to a 5-second clip
+- default to about a 5-second raw clip
 - use 9:16 or 16:9 aspect ratio
 - enable multishot only when it clearly improves the scene
+- plan to keep only the strongest ~3 seconds on the final timeline for energetic edits unless a shot deserves a longer hold
 
 Track returned task IDs and clip URLs.
 
@@ -48,11 +49,19 @@ Prefer one clean full narration file when timing is stable; prefer per-scene fil
 
 ## 6. Music
 
-If requested, either:
-- generate music via the configured Kie/music route
-- or attach a suitable sourced track if the user supplied one
+Do not wait for a follow-up prompt when the video clearly needs music.
 
-## 7. Remotion assembly
+Preferred order:
+- if external sourcing is allowed, search for a strong candidate track on the web first
+- if sourcing fails, is blocked, or sounds weaker than needed, generate a custom instrumental track via Kie music
+- in this setup, prefer Kie music model `V5` with `customMode: true` and `instrumental: true`
+
+After choosing the music:
+- wire it into the edit immediately
+- retime key cuts to major beats where useful
+- re-check narration coverage so the ending does not feel empty or under-voiced
+
+## 7. ffmpeg assembly
 
 Create a project folder per video job.
 Suggested structure:
@@ -60,12 +69,26 @@ Suggested structure:
 - `assets/images/`
 - `assets/video/`
 - `assets/audio/`
-- `src/Root.tsx`
-- `src/Composition.tsx`
+- `assets/music/`
+- `subtitles.srt` (optional)
+- `ffmpeg-build/` (generated)
+
+Populate `project.json` with timeline segment metadata including:
+- `source`
+- `start_sec`
+- `duration_sec`
+- optional emphasis flags like `zoom_in`
+- `narration_file`
+- `music_file`
+- optional `subtitle_srt`
+- `final_output`
+
+Run `scripts/ffmpeg_preflight.py <project-dir>` before render.
+Run `scripts/ffmpeg_assemble.py <project-dir>` for final render.
 
 ## 8. Render
 
-Export final MP4.
+Export final MP4 with ffmpeg.
 Store alongside source assets.
 
 ## 9. Review loop
