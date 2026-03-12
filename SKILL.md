@@ -66,6 +66,7 @@ For hard-gated jobs, require these artifacts before delivery:
    - Prefer ElevenLabs Voice Design first when the story benefits from a custom voice cast or a specific narrator vibe
    - Choose the best-fitting generated voice(s) for the story, then render the final narration
    - Use the preferred voice from TOOLS.md when a custom voice is not required or when the user explicitly wants it
+   - Write final narration with tone/performance cues in square brackets before each line or segment, for example `[softly]`, `[warm]`, `[dramatic]`
    - Keep narration aligned to scene timing
    - Keep narration aligned to what is visually on screen while that line is being spoken; if a line mentions a concrete thing/event, the concurrent shot should show that thing, its consequence, or an obvious supporting visual
 7. Add music automatically when the video benefits from it, unless the user explicitly says not to.
@@ -188,6 +189,7 @@ Use these bundled resources when doing the work:
 - `references/music-generation.md` — Kie V5 music generation defaults, sourcing fallback rules, and ending/narration integration checks
 - `references/narration-visual-alignment.md` — rules for making the on-screen shot match the narration line while it is spoken
 - `references/shot-length-and-trimming.md` — default policy for generating longer raw shots but using tighter ~3 second selections in the final edit
+- `../video-voice-music-stage/references/voice-direction-format.md` — required square-bracket format for narration tone cues before ElevenLabs generation
 
 ## Practical defaults
 
