@@ -144,6 +144,8 @@ Packaged `.skill` artifacts ready to install or publish:
 
 Additional editorial rule now enforced: narration-to-visual alignment. If the voiceover mentions a concrete thing or event, the concurrent shot should show that thing, its consequence, or an obvious supporting visual.
 
+Additional pacing rule now enforced: generated clips may be around 5 seconds as raw material, but energetic edits should usually keep only the strongest ~3 seconds of each shot unless a hero moment deserves longer.
+
 ## Confirmed working pieces
 
 This repo was built from real end-to-end testing in an OpenClaw workspace.

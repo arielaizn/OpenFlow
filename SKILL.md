@@ -37,7 +37,8 @@ For hard-gated jobs, require these artifacts before delivery:
    - Duration target: usually 10–60 seconds unless the user says otherwise
    - Aspect ratio: 9:16 for vertical, 16:9 for landscape, 1:1 for square
 2. Break the idea into scenes.
-   - 3–8 scenes for short videos
+   - 3–8 scenes for simpler short videos; use more shots/segments when the goal is a denser, more kinetic cut
+   - Separate raw generated shot duration from final used timeline duration
    - Each scene needs: purpose, visual subject, camera style, motion, duration, voice line, sound intent
 3. Generate strong scene prompts.
    - Before ideation-heavy creative work, pull 3 random seeds from the local `creative-seeds` skill and let them shift your thinking internally
@@ -49,7 +50,8 @@ For hard-gated jobs, require these artifacts before delivery:
    - Use the confirmed model id `kling-3.0/video`
    - Treat the intended workflow as image-to-video
    - Upload each scene still to a temporary public URL first, then use that image URL as the reference input
-   - Default each animated shot to 5 seconds unless the user asks otherwise
+   - Default each animated raw shot to about 5 seconds unless the user asks otherwise
+   - Do not assume the full generated 5 seconds should stay in the final cut; for energetic edits, prefer trimming each shot down to about 3 strong seconds on the timeline unless a hero moment deserves longer
    - Use 9:16 or 16:9, not square, for video outputs
    - Put camera movement, motion feel, pacing, and animation intent directly into the animation prompt
    - Use `mode: std` for tests and `mode: pro` for final output when appropriate
@@ -134,6 +136,7 @@ Keep edits clean and fast:
 - gentle fades only when they add value
 - do not overuse flashy transitions
 - decide trims and cut points intentionally; do not just drop full clips into the timeline unchanged
+- for energetic short-form work, assume the best 3 seconds of a generated 5-second shot are usually stronger than the whole raw clip
 - if narration is active, verify the concurrent shot semantically matches the line being spoken
 
 ## Music rules
@@ -177,6 +180,7 @@ Use these bundled resources when doing the work:
 - `references/kling-kie.md` — confirmed Kie.ai Kling model name, create/poll flow, and currently known payload limits
 - `references/music-generation.md` — Kie V5 music generation defaults, sourcing fallback rules, and ending/narration integration checks
 - `references/narration-visual-alignment.md` — rules for making the on-screen shot match the narration line while it is spoken
+- `references/shot-length-and-trimming.md` — default policy for generating longer raw shots but using tighter ~3 second selections in the final edit
 
 ## Practical defaults
 
