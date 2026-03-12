@@ -78,6 +78,12 @@ This repo now ships with companion quality-control skills that are meant to be u
 
 Packaged `.skill` files for these companions are included under `dist/`.
 
+The workflow is now hardened with required proof artifacts before render/delivery:
+- `delivery-checklist.md`
+- `edit-plan.md`
+- `preflight-report.md`
+- `delivery-audit.md`
+
 ## Repository structure
 
 ```text

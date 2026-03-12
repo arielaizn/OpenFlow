@@ -24,6 +24,12 @@ Use these companion skills alongside this one when relevant:
 - `remotion-preflight-review` immediately before final render.
 - `video-delivery-auditor` immediately before claiming the video is done.
 
+For hard-gated jobs, require these artifacts before delivery:
+- `delivery-checklist.md`
+- `edit-plan.md`
+- `preflight-report.md`
+- `delivery-audit.md`
+
 ## Core workflow
 
 1. Decide the output format first.
@@ -61,6 +67,7 @@ Use these companion skills alongside this one when relevant:
    - Build a timeline with clips, voice, music, timing, and simple transitions
    - Export a final MP4 and any requested caption/subtitle variants
    - Run a real preflight review before final render; do not skip from "assets exist" to delivery
+   - For strict workflows, do not render until `delivery-checklist.md`, `edit-plan.md`, and `preflight-report.md` exist and the preflight checks pass
    - If the user explicitly asked for real animation, do not treat a Remotion still-motion / Ken Burns style fallback as equivalent completion; only count the animation requirement as satisfied when actual animated clips were produced by Kling or another real animation stage
 
 ## Creative operating rules
@@ -139,6 +146,10 @@ Default deliverables:
 - scene plan / shot list
 - final narration text
 - asset manifest (images, clips, audio)
+- `delivery-checklist.md`
+- `edit-plan.md`
+- `preflight-report.md`
+- `delivery-audit.md`
 
 Optional deliverables:
 - captions/subtitles
