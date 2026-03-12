@@ -2,6 +2,8 @@
 
 ![OpenFlow hero](assets/screenshots/openflow-hero.svg)
 
+> Want real inline video players instead of GitHub's inconsistent README rendering? Open the **HTML showcase page**: [OpenFlow Showcase](index.html)
+
 ![Workflow](https://img.shields.io/badge/workflow-ffmpeg--first-0ea5e9)
 ![Images](https://img.shields.io/badge/images-Kie.ai%20Nano%20Banana%202-8b5cf6)
 ![Animation](https://img.shields.io/badge/animation-Kling%20via%20Kie-06b6d4)
@@ -88,7 +90,10 @@ Remotion can still be used intentionally, but it is no longer the default path.
 
 These are real outputs produced through the workflow on the server and committed into this repo as video files.
 
-> Note: GitHub README rendering can be inconsistent with inline MP4 playback. The blocks below are set up so visitors can try to watch inline, and if GitHub does not render the player for them, clicking the filename still opens the real video file in the repo.
+For the best viewing experience with real HTML players, open the dedicated showcase page:
+- [OpenFlow Showcase](index.html)
+
+> GitHub README rendering is inconsistent with inline MP4 playback, so the showcase page is the recommended presentation layer.
 
 ### KorKola 30s ad
 <video src="assets/videos/korkola-30s.mp4" controls muted playsinline width="360"></video>

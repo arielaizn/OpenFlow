@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenFlow Showcase</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: #0f172a;
+      --line: #22304a;
+      --text: #eef4ff;
+      --muted: #a8b6d1;
+      --teal: #22d3ee;
+      --violet: #a78bfa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #08111f 0%, #0d1630 100%);
+      color: var(--text);
+    }
+    .wrap {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+    .hero {
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(34,211,238,.10), rgba(167,139,250,.10));
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.25);
+    }
+    .hero h1 { margin: 0 0 10px; font-size: 42px; }
+    .hero p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .badgebar { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: rgba(15,23,42,.92);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    .card h2 {
+      font-size: 20px;
+      margin: 0;
+      padding: 18px 18px 8px;
+    }
+    .meta {
+      color: var(--muted);
+      padding: 0 18px 14px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    video {
+      width: 100%;
+      display: block;
+      background: #000;
+    }
+    .links {
+      display: flex;
+      gap: 10px;
+      padding: 16px 18px 20px;
+      flex-wrap: wrap;
+    }
+    .links a {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+    .footer {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>OpenFlow Showcase</h1>
+      <p>
+        Real generated outputs produced with the OpenFlow workflow on a live server.
+        This page exists because GitHub README rendering is inconsistent with inline MP4 players.
+        Here, each result is shown with a real HTML video player.
+      </p>
+      <div class="badgebar">
+        <span class="badge">ffmpeg-first editing</span>
+        <span class="badge">Kie.ai + Kling</span>
+        <span class="badge">ElevenLabs narration</span>
+        <span class="badge">Kie/Suno music</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>KorKola 30s Ad</h2>
+        <div class="meta">Hebrew commercial spot, animated scenes, narration, music, final render.</div>
+        <video controls preload="metadata" src="assets/videos/korkola-30s.mp4"></video>
+        <div class="links"><a href="assets/videos/korkola-30s.mp4">Open video file</a></div>
+      </article>
+
+      <article class="card">
+        <h2>Abigail Rebuild</h2>
+        <div class="meta">Rebuilt cut with Hebrew subtitles, refreshed edit structure, final MP4.</div>
+        <video controls preload="metadata" src="assets/videos/abigail-hebrew-subs.mp4"></video>
+        <div class="links"><a href="assets/videos/abigail-hebrew-subs.mp4">Open video file</a></div>
+      </article>
+
+      <article class="card">
+        <h2>Red Bull-inspired F1 v1</h2>
+        <div class="meta">Initial motorsport ad pass with generated scenes, narration, and music.</div>
+        <video controls preload="metadata" src="assets/videos/redbull-f1-v1.mp4"></video>
+        <div class="links"><a href="assets/videos/redbull-f1-v1.mp4">Open video file</a></div>
+      </article>
+
+      <article class="card">
+        <h2>Red Bull-inspired F1 v2</h2>
+        <div class="meta">Sharper editorial recut, stronger pacing, upgraded music energy.</div>
+        <video controls preload="metadata" src="assets/videos/redbull-f1-v2.mp4"></video>
+        <div class="links"><a href="assets/videos/redbull-f1-v2.mp4">Open video file</a></div>
+      </article>
+
+      <article class="card">
+        <h2>Red Bull-inspired F1 v3</h2>
+        <div class="meta">Kie/Suno-backed music proof, tighter structure, stronger narrated ending.</div>
+        <video controls preload="metadata" src="assets/videos/redbull-f1-v3.mp4"></video>
+        <div class="links"><a href="assets/videos/redbull-f1-v3.mp4">Open video file</a></div>
+      </article>
+
+      <article class="card">
+        <h2>Swarovski-inspired Jewelry Ad</h2>
+        <div class="meta">15-shot vertical jewelry commercial with narration, Kie/Suno music, ffmpeg render.</div>
+        <video controls preload="metadata" src="assets/videos/swarovski-jewelry-45s.mp4"></video>
+        <div class="links"><a href="assets/videos/swarovski-jewelry-45s.mp4">Open video file</a></div>
+      </article>
+    </section>
+
+    <div class="footer">
+      If you are viewing this through GitHub Pages, these players should work as standard HTML5 videos.
+      If you are browsing the repository directly, use the README link to open this showcase page.
+    </div>
+  </div>
+</body>
+</html>
