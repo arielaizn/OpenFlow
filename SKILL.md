@@ -60,9 +60,13 @@ For hard-gated jobs, require these artifacts before delivery:
    - Choose the best-fitting generated voice(s) for the story, then render the final narration
    - Use the preferred voice from TOOLS.md when a custom voice is not required or when the user explicitly wants it
    - Keep narration aligned to scene timing
-7. Add music only if requested or clearly useful.
-   - If the user asks for matching music, either source it or generate it through the configured music path (for example Suno via Kie if available)
+   - Keep narration aligned to what is visually on screen while that line is being spoken; if a line mentions a concrete thing/event, the concurrent shot should show that thing, its consequence, or an obvious supporting visual
+7. Add music automatically when the video benefits from it, unless the user explicitly says not to.
+   - Prefer web-sourced tracks first when the user allows external sourcing and a stronger ready-made track may outperform generation
+   - If sourcing fails, is blocked, or is weaker than needed, generate music through the configured Kie music path
+   - In this environment, prefer Kie music generation with model `V5`, `customMode: true`, and `instrumental: true` unless vocals were explicitly requested
    - Treat music as incomplete until it is actually wired into the edit/timeline, not just saved as a file
+   - Re-check narration timing after music is chosen; if the ending feels under-voiced, shorten the cut or redistribute/add narration instead of leaving dead air by accident
 8. Assemble everything in Remotion.
    - Build a timeline with clips, voice, music, timing, and simple transitions
    - Export a final MP4 and any requested caption/subtitle variants
@@ -95,6 +99,7 @@ For each scene, decide:
 - transition in/out
 - narration line
 - audio mood
+- why the chosen shot visually matches the narration line (if any)
 
 Good scene prompt shape:
 - subject + action + environment + framing + lighting + style + continuity anchors
@@ -129,15 +134,19 @@ Keep edits clean and fast:
 - gentle fades only when they add value
 - do not overuse flashy transitions
 - decide trims and cut points intentionally; do not just drop full clips into the timeline unchanged
+- if narration is active, verify the concurrent shot semantically matches the line being spoken
 
 ## Music rules
 
 If the video would benefit from music, add it proactively unless the user says not to.
 - infer genre from the video goal
+- if external sourcing is allowed, search for a strong track first when that is likely to beat a generic generated bed
+- if sourcing is weak/unavailable, generate a custom instrumental track via Kie music using `V5` by default
 - keep music supportive, not dominant over narration
 - if using generated music, request instrumental unless vocals are explicitly wanted
 - match BPM/energy to the pacing of the scenes
 - after adding music, verify it is present in the composition/timeline before delivery
+- after music is in the edit, check the last 10-15 seconds for narration drop-off; shorten or rewrite the ending structure if the close feels empty
 
 ## Deliverables
 
@@ -166,6 +175,8 @@ Use these bundled resources when doing the work:
 - `references/workflow.md` — detailed decision flow for full video creation
 - `references/prompt-patterns.md` — prompt patterns for scene, motion, narration, and music intent
 - `references/kling-kie.md` — confirmed Kie.ai Kling model name, create/poll flow, and currently known payload limits
+- `references/music-generation.md` — Kie V5 music generation defaults, sourcing fallback rules, and ending/narration integration checks
+- `references/narration-visual-alignment.md` — rules for making the on-screen shot match the narration line while it is spoken
 
 ## Practical defaults
 

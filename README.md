@@ -141,6 +141,9 @@ Packaged `.skill` artifacts ready to install or publish:
 - the updated `kie-video-studio.skill`
 - the companion QA / editing skills bundled with this repo
 
+
+Additional editorial rule now enforced: narration-to-visual alignment. If the voiceover mentions a concrete thing or event, the concurrent shot should show that thing, its consequence, or an obvious supporting visual.
+
 ## Confirmed working pieces
 
 This repo was built from real end-to-end testing in an OpenClaw workspace.
