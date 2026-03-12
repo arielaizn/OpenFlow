@@ -70,8 +70,8 @@ For hard-gated jobs, require these artifacts before delivery:
    - Keep narration aligned to scene timing
    - Keep narration aligned to what is visually on screen while that line is being spoken; if a line mentions a concrete thing/event, the concurrent shot should show that thing, its consequence, or an obvious supporting visual
 7. Add music automatically when the video benefits from it, unless the user explicitly says not to.
-   - Prefer web-sourced tracks first when the user allows external sourcing and a stronger ready-made track may outperform generation
-   - If sourcing fails, is blocked, or is weaker than needed, generate music through the configured Kie music path
+   - Do not search the web for music by default.
+   - Generate music through the configured Kie/Suno path by default.
    - In this environment, prefer Kie music generation with model `V5`, `customMode: true`, and `instrumental: true` unless vocals were explicitly requested
    - Treat music as incomplete until it is actually wired into the edit/timeline, not just saved as a file
    - Re-check narration timing after music is chosen; if the ending feels under-voiced, shorten the cut or redistribute/add narration instead of leaving dead air by accident
@@ -150,8 +150,8 @@ Keep edits clean and fast:
 
 If the video would benefit from music, add it proactively unless the user says not to.
 - infer genre from the video goal
-- if external sourcing is allowed, search for a strong track first when that is likely to beat a generic generated bed
-- if sourcing is weak/unavailable, generate a custom instrumental track via Kie music using `V5` by default
+- do not search external sites for music by default
+- generate a custom instrumental track via Kie/Suno using `V5` by default
 - keep music supportive, not dominant over narration
 - if using generated music, request instrumental unless vocals are explicitly wanted
 - match BPM/energy to the pacing of the scenes
