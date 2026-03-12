@@ -10,7 +10,7 @@ It is designed for workflows where one agent coordinates the full stack:
 - image generation with Kie.ai
 - image-to-video animation with Kling via Kie.ai
 - voice design and narration with ElevenLabs
-- assembly and rendering with Remotion
+- assembly and rendering with ffmpeg by default
 
 This repo contains the skill definition plus the helper scripts and reference material needed to run that pipeline in a real OpenClaw workspace.
 
@@ -49,10 +49,10 @@ OpenFlow is built around this sequence:
    - render narration audio
 6. **Add music**
    - generate or attach a music bed when it improves the final result
-7. **Assemble in Remotion**
-   - place scenes, voice, and music on a clean timeline
+7. **Assemble with ffmpeg**
+   - place scenes, voice, music, trims, and subtitles on a clean timeline via config metadata
 8. **Render final video**
-   - export a vertical or horizontal MP4
+   - export a vertical or horizontal MP4 with ffmpeg
 
 ## Screenshots
 
@@ -115,7 +115,7 @@ The main OpenClaw skill definition.
 It explains when to use the skill and how the workflow should behave.
 
 ### `references/workflow.md`
-A higher-level flow for intake, planning, asset creation, animation, voice, music, Remotion assembly, and revision loops.
+A higher-level flow for intake, planning, asset creation, animation, voice, music, ffmpeg assembly, and revision loops.
 
 ### `references/prompt-patterns.md`
 Prompt patterns for scene stills, Kling motion prompts, narration tone, and music intent.
@@ -132,8 +132,11 @@ A generic Kie.ai helper for:
 ### `scripts/elevenlabs_tts.py`
 A minimal ElevenLabs speech helper for generating narration audio files.
 
-### `scripts/remotion_bootstrap.sh`
-Bootstraps a minimal Remotion project for timeline assembly and local rendering.
+### `scripts/ffmpeg_preflight.py`
+Validates timeline segments, trims, and required audio inputs before final render.
+
+### `scripts/ffmpeg_assemble.py`
+Builds trimmed subclips, stitches them, mixes narration/music, optionally burns subtitles, and renders the final MP4 with ffmpeg.
 
 
 ### `dist/`
@@ -155,7 +158,7 @@ The following pieces were verified in practice:
 - Kling via Kie.ai using `kling-3.0/video`
 - ElevenLabs voice generation
 - ElevenLabs Voice Design workflow compatibility
-- Remotion project bootstrap and rendering
+- ffmpeg-first assembly and rendering
 - final vertical MP4 export from a multi-stage generated workflow
 
 ## Kling notes discovered in practice
@@ -191,7 +194,7 @@ Typical external services used by the workflow:
 
 - **Kie.ai** for image generation and Kling animation
 - **ElevenLabs** for voice design and narration
-- **Remotion** for assembly and render
+- **ffmpeg** for assembly and render by default
 
 ## Credentials and safety
 
@@ -234,7 +237,7 @@ Good follow-up improvements for this repo include:
 ## Summary
 
 OpenFlow turns a vague video request into a structured pipeline:
-idea → scenes → images → animation → voice → music → Remotion → final render.
+idea → scenes → images → animation → voice → music → ffmpeg assembly → final render.
 
 If you are building agent-driven content workflows inside OpenClaw, this repo is a strong starting point.
 
