@@ -86,14 +86,39 @@ Remotion can still be used intentionally, but it is no longer the default path.
 
 ## Real generated outputs
 
-These are real outputs produced through the workflow on the server and committed into this repo as video files:
+These are real outputs produced through the workflow on the server and committed into this repo as video files.
 
-- **KorKola 30s ad** — [assets/videos/korkola-30s.mp4](assets/videos/korkola-30s.mp4)
-- **Abigail rebuild with Hebrew subtitles** — [assets/videos/abigail-hebrew-subs.mp4](assets/videos/abigail-hebrew-subs.mp4)
-- **Red Bull-inspired F1 ad v1** — [assets/videos/redbull-f1-v1.mp4](assets/videos/redbull-f1-v1.mp4)
-- **Red Bull-inspired F1 ad v2** — [assets/videos/redbull-f1-v2.mp4](assets/videos/redbull-f1-v2.mp4)
-- **Red Bull-inspired F1 ad v3** — [assets/videos/redbull-f1-v3.mp4](assets/videos/redbull-f1-v3.mp4)
-- **Swarovski-inspired jewelry ad** — [assets/videos/swarovski-jewelry-45s.mp4](assets/videos/swarovski-jewelry-45s.mp4)
+> Note: GitHub README rendering can be inconsistent with inline MP4 playback. The blocks below are set up so visitors can try to watch inline, and if GitHub does not render the player for them, clicking the filename still opens the real video file in the repo.
+
+### KorKola 30s ad
+<video src="assets/videos/korkola-30s.mp4" controls muted playsinline width="360"></video>
+
+[Open video file](assets/videos/korkola-30s.mp4)
+
+### Abigail rebuild with Hebrew subtitles
+<video src="assets/videos/abigail-hebrew-subs.mp4" controls muted playsinline width="360"></video>
+
+[Open video file](assets/videos/abigail-hebrew-subs.mp4)
+
+### Red Bull-inspired F1 ad v1
+<video src="assets/videos/redbull-f1-v1.mp4" controls muted playsinline width="360"></video>
+
+[Open video file](assets/videos/redbull-f1-v1.mp4)
+
+### Red Bull-inspired F1 ad v2
+<video src="assets/videos/redbull-f1-v2.mp4" controls muted playsinline width="360"></video>
+
+[Open video file](assets/videos/redbull-f1-v2.mp4)
+
+### Red Bull-inspired F1 ad v3
+<video src="assets/videos/redbull-f1-v3.mp4" controls muted playsinline width="360"></video>
+
+[Open video file](assets/videos/redbull-f1-v3.mp4)
+
+### Swarovski-inspired jewelry ad
+<video src="assets/videos/swarovski-jewelry-45s.mp4" controls muted playsinline width="360"></video>
+
+[Open video file](assets/videos/swarovski-jewelry-45s.mp4)
 
 ## Example outputs
 
