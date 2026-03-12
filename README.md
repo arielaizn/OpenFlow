@@ -141,8 +141,13 @@ These examples show the kinds of intermediate assets OpenFlow produces during a 
 
 ## Companion skills
 
-This repo ships with companion quality-control skills meant to be used alongside OpenFlow:
+This repo ships with companion skills meant to split the workflow into cleaner stages instead of forcing one overloaded skill to do everything at once:
 
+- `video-preproduction` — planning, batching, shot-count strategy, and checklist locking
+- `video-visual-generation` — passport/reference image handling and still generation
+- `video-animation-stage` — animation of approved stills into raw clips
+- `video-voice-music-stage` — Voice Design, narration, music generation, and narration coverage
+- `video-ffmpeg-finisher` — ffmpeg assembly, preflight, audit, and final render
 - `video-editing-director` — editing judgment for cuts, pacing, trim points, and scene order
 - `openflow-requirements-guard` — requirement checklist / gatekeeper for user-mandated workflow steps
 - `remotion-preflight-review` — timeline preflight for ffmpeg-first or intentionally-Remotion workflows

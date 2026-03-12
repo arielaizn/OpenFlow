@@ -19,6 +19,11 @@ Build complete videos from an idea, not just isolated assets.
 ## Companion skills
 
 Use these companion skills alongside this one when relevant:
+- `video-preproduction` to lock concept, shot count, batching, and checklist structure before expensive generation starts.
+- `video-visual-generation` to handle passport/reference images and scene still generation.
+- `video-animation-stage` to animate approved stills into raw clips.
+- `video-voice-music-stage` to add Voice Design, narration, and approved music after visuals are mostly locked.
+- `video-ffmpeg-finisher` to assemble, preflight, audit, and render the final cut with ffmpeg.
 - `openflow-requirements-guard` at job start when the user gives mandatory steps or quality bars.
 - `video-editing-director` before timeline assembly so the edit has intentional cuts and pacing.
 - `remotion-preflight-review` immediately before final render if a Remotion project is intentionally used; otherwise run the local ffmpeg preflight script before render.
