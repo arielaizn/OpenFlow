@@ -1,88 +1,115 @@
 # OpenFlow
 
-OpenFlow is an OpenClaw skill for building short-form AI videos from a simple idea.
+![OpenFlow hero](assets/screenshots/openflow-hero.svg)
 
-It is designed for workflows where one agent coordinates the full stack:
+**OpenFlow** is an OpenClaw skill for turning a rough creative idea into a fully produced short-form AI video.
 
-- story and scene planning
+It is built for real end-to-end production workflows where one agent coordinates:
+- story and shot planning
 - prompt polishing
-- consistent character setup
+- passport/reference image setup
 - image generation with Kie.ai
 - image-to-video animation with Kling via Kie.ai
 - voice design and narration with ElevenLabs
-- assembly and rendering with ffmpeg by default
+- music generation with Kie/Suno when needed
+- ffmpeg-first editing, trimming, subtitle burn-in, and final render
 
-This repo contains the skill definition plus the helper scripts and reference material needed to run that pipeline in a real OpenClaw workspace.
+## At a glance
 
-## What makes it different
+- **Default editor/renderer:** ffmpeg
+- **Image generation:** Kie.ai / nano-banana-2
+- **Animation:** Kling via Kie.ai
+- **Voice:** ElevenLabs + Voice Design
+- **Music:** Kie/Suno or other configured paths when explicitly allowed
+- **Consistency system:** passport/reference-first workflow
+- **Quality control:** requirements guard, edit-direction, preflight, and delivery audit
+
+## Why OpenFlow exists
 
 OpenFlow is not just a prompt template.
-It is a production-oriented workflow for turning a rough creative ask into a structured video pipeline.
+It is a production workflow for taking a loose request like:
+- "make me a 30-second ad"
+- "build a short story with one recurring character"
+- "animate scene stills, narrate them, and export a final MP4"
 
-It supports ideas like:
+…and turning that request into a structured pipeline with guardrails.
 
-- "Create a 30-second vertical promo"
-- "Build a short story video with a recurring character"
-- "Generate scene stills, animate them, narrate them, and render the final MP4"
-- "Keep one character consistent across all shots"
+## What makes it strong
 
-A key design principle in this repo is **continuity first**:
-when a recurring character is needed, the workflow creates a clean passport-style reference image first and then reuses it as the identity anchor for later scenes.
+### 1. Continuity first
+If a recurring character or product matters, OpenFlow creates a clean passport-style reference image first, then reuses it to anchor later shots.
 
-## Core pipeline
+### 2. Editing judgment, not just asset dumping
+Generated 5-second clips are treated as **source material**, not automatically final timeline lengths.
+Energetic edits usually keep only the strongest **~3 seconds** of each shot.
 
-OpenFlow is built around this sequence:
+### 3. Narration must match the shot
+If the voiceover mentions a concrete thing or event, the concurrent visual should show that thing, its consequence, or an obvious supporting visual.
 
-1. **Spark ideation first**
-   - use the `creative-seeds` companion skill internally to break stale pattern-thinking before story and scene design
-2. **Plan the video**
-   - define goal, duration, aspect ratio, tone, and scene list
-2. **Create a recurring character reference if needed**
-   - generate a white-background passport-style identity image first
-3. **Generate scene stills**
-   - create polished prompts and generate scene images with Kie.ai
-4. **Animate scenes with Kling**
-   - upload scene images to temporary public URLs
-   - animate each shot as image-to-video
-5. **Create voice**
-   - use ElevenLabs Voice Design when a tailored narrator voice helps
-   - render narration audio
-6. **Add music**
-   - generate or attach a music bed when it improves the final result
-7. **Assemble with ffmpeg**
-   - place scenes, voice, music, trims, and subtitles on a clean timeline via config metadata
-8. **Render final video**
-   - export a vertical or horizontal MP4 with ffmpeg
-
-## Screenshots
-
-### Character passport reference
-
-![Yoav passport reference](assets/screenshots/yoav-passport.png)
-
-### Example generated scenes
-
-![Scene 1](assets/screenshots/scene-1.png)
-![Scene 3](assets/screenshots/scene-3.png)
-![Scene 5](assets/screenshots/scene-5.png)
-
-
-## Companion skills
-
-This repo now ships with companion quality-control skills that are meant to be used alongside OpenFlow:
-
-- `video-editing-director` — editing judgment for cuts, pacing, trim points, and scene order
-- `openflow-requirements-guard` — requirement checklist / gatekeeper for user-mandated workflow steps
-- `remotion-preflight-review` — pre-render inspection before final export (ffmpeg-first or Remotion when intentionally used)
-- `video-delivery-auditor` — post-render evidence-based QA before claiming completion
-
-Packaged `.skill` files for these companions are included under `dist/`.
-
-The workflow is now hardened with required proof artifacts before render/delivery:
+### 4. Proof-gated workflow
+OpenFlow supports hard-gated artifacts before delivery:
 - `delivery-checklist.md`
 - `edit-plan.md`
 - `preflight-report.md`
 - `delivery-audit.md`
+
+### 5. ffmpeg-first final assembly
+Editing/rendering now defaults to **ffmpeg-based assembly**, not Remotion-first assembly.
+Remotion can still be used intentionally, but it is no longer the default path.
+
+## Core pipeline
+
+1. **Spark ideation**
+   - optionally use `creative-seeds` to break stale thinking before scene design
+2. **Plan the video**
+   - define goal, duration, aspect ratio, tone, and shot structure
+3. **Create a passport/reference image**
+   - if a recurring character/product needs continuity
+4. **Generate scene stills**
+   - polished prompts + Kie image generation
+5. **Animate scenes**
+   - Kling image-to-video clips
+6. **Design voice + render narration**
+   - ElevenLabs Voice Design when appropriate
+7. **Generate or attach music**
+   - Kie/Suno by default when custom soundtrack generation is needed
+8. **Assemble with ffmpeg**
+   - trims, sequencing, voice/music mix, subtitles, final export
+9. **Preflight and audit**
+   - check pacing, wiring, narration/visual alignment, and delivery readiness
+
+## Example outputs
+
+These examples show the kinds of intermediate assets OpenFlow produces during a real workflow — not just a single final render.
+
+### Character passport reference
+![Yoav passport reference](assets/screenshots/yoav-passport.png)
+
+### Example generated scenes
+<p align="center">
+  <img src="assets/screenshots/scene-1.png" alt="Scene 1" width="30%" />
+  <img src="assets/screenshots/scene-3.png" alt="Scene 3" width="30%" />
+  <img src="assets/screenshots/scene-5.png" alt="Scene 5" width="30%" />
+</p>
+
+## Companion skills
+
+This repo ships with companion quality-control skills meant to be used alongside OpenFlow:
+
+- `video-editing-director` — editing judgment for cuts, pacing, trim points, and scene order
+- `openflow-requirements-guard` — requirement checklist / gatekeeper for user-mandated workflow steps
+- `remotion-preflight-review` — timeline preflight for ffmpeg-first or intentionally-Remotion workflows
+- `video-delivery-auditor` — evidence-based QA before claiming completion
+
+Packaged `.skill` files for these companions are included under `dist/`.
+
+## Quickstart
+
+1. Install the skill in an OpenClaw workspace.
+2. Provide API credentials outside the repo.
+3. Ask for a video with a clear goal, duration, and aspect ratio.
+4. Let OpenFlow plan, generate, animate, voice, score, trim, and render.
+5. Review the proof artifacts before delivery.
 
 ## Repository structure
 
@@ -100,59 +127,49 @@ OpenFlow/
 │   └── screenshots/
 ├── references/
 │   ├── kling-kie.md
+│   ├── music-generation.md
+│   ├── narration-visual-alignment.md
 │   ├── prompt-patterns.md
+│   ├── shot-length-and-trimming.md
 │   └── workflow.md
 └── scripts/
     ├── elevenlabs_tts.py
-    ├── kie_job_client.py
-    └── remotion_bootstrap.sh
+    ├── ffmpeg_assemble.py
+    ├── ffmpeg_preflight.py
+    └── kie_job_client.py
 ```
 
-## Files
+## Important files
 
 ### `SKILL.md`
 The main OpenClaw skill definition.
 It explains when to use the skill and how the workflow should behave.
 
 ### `references/workflow.md`
-A higher-level flow for intake, planning, asset creation, animation, voice, music, ffmpeg assembly, and revision loops.
+High-level flow for intake, planning, asset creation, animation, voice, music, ffmpeg assembly, and revision loops.
 
-### `references/prompt-patterns.md`
-Prompt patterns for scene stills, Kling motion prompts, narration tone, and music intent.
+### `references/narration-visual-alignment.md`
+Rules for making the shot on screen match the narration line being spoken.
 
-### `references/kling-kie.md`
-Working notes for Kling via Kie.ai, including the model name that worked in practice and the behavior discovered while testing.
+### `references/shot-length-and-trimming.md`
+Rules for generating slightly longer source shots but using tighter, stronger selections in the final cut.
 
 ### `scripts/kie_job_client.py`
-A generic Kie.ai helper for:
-- creating jobs
-- polling job status
-- waiting for completion
+Generic Kie.ai helper for creating and polling jobs.
 
 ### `scripts/elevenlabs_tts.py`
-A minimal ElevenLabs speech helper for generating narration audio files.
+Minimal ElevenLabs helper for narration generation.
 
 ### `scripts/ffmpeg_preflight.py`
-Validates timeline segments, trims, and required audio inputs before final render.
+Validates timeline segments, trims, narration/music presence, and render readiness.
 
 ### `scripts/ffmpeg_assemble.py`
 Builds trimmed subclips, stitches them, mixes narration/music, optionally burns subtitles, and renders the final MP4 with ffmpeg.
 
-
-### `dist/`
-Packaged `.skill` artifacts ready to install or publish:
-- the updated `kie-video-studio.skill`
-- the companion QA / editing skills bundled with this repo
-
-
-Additional editorial rule now enforced: narration-to-visual alignment. If the voiceover mentions a concrete thing or event, the concurrent shot should show that thing, its consequence, or an obvious supporting visual.
-
-Additional pacing rule now enforced: generated clips may be around 5 seconds as raw material, but energetic edits should usually keep only the strongest ~3 seconds of each shot unless a hero moment deserves longer.
-
 ## Confirmed working pieces
 
 This repo was built from real end-to-end testing in an OpenClaw workspace.
-The following pieces were verified in practice:
+Verified in practice:
 
 - Kie.ai image generation workflow
 - Kling via Kie.ai using `kling-3.0/video`
@@ -161,29 +178,9 @@ The following pieces were verified in practice:
 - ffmpeg-first assembly and rendering
 - final vertical MP4 export from a multi-stage generated workflow
 
-## Kling notes discovered in practice
-
-The most important confirmed behavior so far:
-
-- working model id: `kling-3.0/video`
-- `kling-3.0` without `/video` did not work in this environment
-- a minimal working payload included:
-  - `prompt`
-  - `image_urls`
-  - `duration: "5"`
-  - `aspect_ratio: "9:16"`
-  - `mode: "std"`
-  - `multi_shots: false`
-  - `sound: false`
-- omitting `sound` triggered a `422 sound cannot be empty` error in testing
-- some Kling jobs returned temporary `500 internal error`, and retries with a fresh URL plus a slightly simpler prompt helped
-
-These findings are documented so future runs do not need to rediscover them from scratch.
-
 ## Expected environment
 
 OpenFlow assumes an environment with:
-
 - Python 3
 - Node.js and npm
 - an OpenClaw workspace
@@ -191,7 +188,6 @@ OpenFlow assumes an environment with:
 - credentials available outside version control
 
 Typical external services used by the workflow:
-
 - **Kie.ai** for image generation and Kling animation
 - **ElevenLabs** for voice design and narration
 - **ffmpeg** for assembly and render by default
@@ -203,7 +199,6 @@ No API keys are included in this repository.
 The helper scripts are written to load credentials from environment variables or local credential files that live **outside** the repo.
 
 This repo is intentionally safe to publish because it does **not** include:
-
 - API keys
 - secrets
 - credential files
@@ -213,7 +208,6 @@ This repo is intentionally safe to publish because it does **not** include:
 ## What this repo is for
 
 This repository is best viewed as:
-
 - a reusable OpenClaw skill
 - a reference implementation for AI-assisted video workflows
 - a base for building stronger creative automations over time
@@ -221,25 +215,10 @@ This repository is best viewed as:
 It is not meant to be a full commercial SaaS or standalone GUI app.
 It is the workflow layer that teaches an agent how to orchestrate the moving parts.
 
-OpenFlow now also assumes a creative pre-ideation step powered by the companion `creative-seeds` skill, which helps break repetitive AI pattern-thinking before scene design.
-
-## Recommended next upgrades
-
-Good follow-up improvements for this repo include:
-
-- adding subtitle / caption generation
-- adding reusable project templates for different video styles
-- improving music generation and mixing
-- documenting more exact Kling payload variants as they are discovered
-- adding sample project manifests
-- adding thumbnail generation as a default side-output
-
 ## Summary
 
 OpenFlow turns a vague video request into a structured pipeline:
-idea → scenes → images → animation → voice → music → ffmpeg assembly → final render.
+
+**idea → scenes → images → animation → voice → music → ffmpeg assembly → final render**
 
 If you are building agent-driven content workflows inside OpenClaw, this repo is a strong starting point.
-
-
-Editing/rendering now defaults to ffmpeg-based assembly instead of Remotion-first assembly.

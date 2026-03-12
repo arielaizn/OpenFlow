@@ -1,0 +1,75 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#090C14"/>
+      <stop offset="1" stop-color="#182847"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="80" y1="120" x2="760" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="820" y1="140" x2="1520" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A78BFA" stop-opacity="0.40"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="220" y1="560" x2="1380" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0.04"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="80" y="120" width="660" height="380" rx="42" fill="url(#teal)" filter="url(#blur)"/>
+  <rect x="860" y="140" width="660" height="380" rx="42" fill="url(#violet)" filter="url(#blur)"/>
+  <rect x="220" y="560" width="1160" height="220" rx="42" fill="url(#blue)" filter="url(#blur)"/>
+
+  <text x="96" y="118" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700">OpenFlow</text>
+  <text x="100" y="180" fill="#B9C6E3" font-family="Arial, Helvetica, sans-serif" font-size="30">AI video pipeline for OpenClaw</text>
+
+  <g opacity="0.95">
+    <rect x="92" y="240" width="230" height="310" rx="22" fill="#111827" stroke="#263247"/>
+    <rect x="104" y="252" width="206" height="186" rx="14" fill="#1F2937"/>
+    <circle cx="206" cy="340" r="48" fill="#60A5FA" fill-opacity="0.35"/>
+    <text x="120" y="475" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Passport Reference</text>
+    <text x="120" y="505" fill="#9FB0D3" font-family="Arial, Helvetica, sans-serif" font-size="18">Identity-first continuity</text>
+  </g>
+
+  <g opacity="0.95">
+    <rect x="360" y="270" width="250" height="280" rx="22" fill="#111827" stroke="#263247"/>
+    <rect x="372" y="282" width="226" height="154" rx="14" fill="#172554"/>
+    <path d="M390 415C430 360 470 338 520 315C548 302 565 280 590 300" stroke="#67E8F9" stroke-width="6" stroke-linecap="round"/>
+    <text x="388" y="475" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Generated Stills</text>
+    <text x="388" y="505" fill="#9FB0D3" font-family="Arial, Helvetica, sans-serif" font-size="18">Prompted with Kie.ai</text>
+  </g>
+
+  <g opacity="0.95">
+    <rect x="660" y="240" width="250" height="310" rx="22" fill="#111827" stroke="#263247"/>
+    <rect x="672" y="252" width="226" height="186" rx="14" fill="#111827"/>
+    <path d="M696 396C730 342 792 360 828 312C850 282 880 300 886 330" stroke="#A78BFA" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="726" cy="330" r="18" fill="#A78BFA" fill-opacity="0.45"/>
+    <text x="688" y="475" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Animated Shots</text>
+    <text x="688" y="505" fill="#9FB0D3" font-family="Arial, Helvetica, sans-serif" font-size="18">Kling via Kie.ai</text>
+  </g>
+
+  <g opacity="0.95">
+    <rect x="960" y="270" width="250" height="280" rx="22" fill="#111827" stroke="#263247"/>
+    <rect x="972" y="282" width="226" height="154" rx="14" fill="#1E293B"/>
+    <path d="M992 394C1024 330 1060 374 1094 314C1126 258 1168 304 1188 286" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/>
+    <text x="990" y="475" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Voice + Music</text>
+    <text x="990" y="505" fill="#9FB0D3" font-family="Arial, Helvetica, sans-serif" font-size="18">ElevenLabs + Kie/Suno</text>
+  </g>
+
+  <g opacity="0.95">
+    <rect x="1260" y="240" width="250" height="310" rx="22" fill="#111827" stroke="#263247"/>
+    <rect x="1272" y="252" width="226" height="186" rx="14" fill="#0F172A"/>
+    <text x="1294" y="332" fill="#67E8F9" font-family="Courier New, monospace" font-size="20">ffmpeg_assemble.py</text>
+    <text x="1294" y="366" fill="#E2E8F0" font-family="Courier New, monospace" font-size="18">trim → stitch → mix</text>
+    <text x="1294" y="400" fill="#E2E8F0" font-family="Courier New, monospace" font-size="18">subtitles → render</text>
+    <text x="1288" y="475" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">ffmpeg Final Render</text>
+    <text x="1288" y="505" fill="#9FB0D3" font-family="Arial, Helvetica, sans-serif" font-size="18">Default delivery path</text>
+  </g>
+
+  <text x="100" y="690" fill="#E5EDF9" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Passport → Stills → Animation → Voice → Music → ffmpeg</text>
+  <text x="100" y="742" fill="#AAB9D6" font-family="Arial, Helvetica, sans-serif" font-size="24">Production-ready skill for OpenClaw video workflows</text>
+</svg>
