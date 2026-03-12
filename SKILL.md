@@ -79,7 +79,6 @@ For hard-gated jobs, require these artifacts before delivery:
    - Re-check narration timing after music is chosen; if the ending feels under-voiced, shorten the cut or redistribute/add narration instead of leaving dead air by accident
 8. Assemble everything with ffmpeg by default.
    - Build a timeline config with clips, trims, voice, music, timing, and simple transitions
-   - Add tasteful on-screen text overlays when they improve the vibe, pacing, branding, or editorial punch of the video
    - Use `scripts/ffmpeg_preflight.py <project-dir>` before final render
    - Use `scripts/ffmpeg_assemble.py <project-dir>` to render the final MP4 and any requested subtitle burn-in variant
    - Run a real preflight review before final render; do not skip from "assets exist" to delivery
@@ -139,7 +138,6 @@ The assembly stage should:
 - add music bed
 - control cuts and simple transitions
 - optionally burn captions/subtitles
-- optionally add stylish on-screen text overlays or title cards when they strengthen the ad/story feel
 - render the final deliverable
 
 Keep edits clean and fast:
@@ -193,7 +191,6 @@ Use these bundled resources when doing the work:
 - `references/music-generation.md` — Kie V5 music generation defaults, sourcing fallback rules, and ending/narration integration checks
 - `references/narration-visual-alignment.md` — rules for making the on-screen shot match the narration line while it is spoken
 - `references/shot-length-and-trimming.md` — default policy for generating longer raw shots but using tighter ~3 second selections in the final edit
-- `references/text-overlays.md` — how and when to add stylish on-screen text overlays or title cards in the final edit
 - `../video-voice-music-stage/references/voice-direction-format.md` — required square-bracket format for narration tone cues before ElevenLabs generation
 
 ## Practical defaults
