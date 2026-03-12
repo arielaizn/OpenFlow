@@ -2,6 +2,12 @@
 
 ![OpenFlow hero](assets/screenshots/openflow-hero.svg)
 
+![Workflow](https://img.shields.io/badge/workflow-ffmpeg--first-0ea5e9)
+![Images](https://img.shields.io/badge/images-Kie.ai%20Nano%20Banana%202-8b5cf6)
+![Animation](https://img.shields.io/badge/animation-Kling%20via%20Kie-06b6d4)
+![Voice](https://img.shields.io/badge/voice-ElevenLabs-f59e0b)
+![Music](https://img.shields.io/badge/music-Kie%2FSuno-10b981)
+
 **OpenFlow** is an OpenClaw skill for turning a rough creative idea into a fully produced short-form AI video.
 
 It is built for real end-to-end production workflows where one agent coordinates:
@@ -78,6 +84,17 @@ Remotion can still be used intentionally, but it is no longer the default path.
 9. **Preflight and audit**
    - check pacing, wiring, narration/visual alignment, and delivery readiness
 
+## Real generated outputs
+
+These are real outputs produced through the workflow on the server:
+
+- **KorKola 30s ad** — <https://drive.google.com/file/d/1_aHbK6EQDTOATJNaLgTkHckfFh_9Gizt/view?usp=drivesdk>
+- **Abigail rebuild with Hebrew subtitles** — <https://drive.google.com/file/d/144SokuiAwAq0nIkrUlhFimhBTeoH03dN/view?usp=drivesdk>
+- **Red Bull-inspired F1 ad v1** — <https://drive.google.com/file/d/1OfepqfM2YgU4grhxEszvA8YT5JIRed_0/view?usp=drivesdk>
+- **Red Bull-inspired F1 ad v2** — <https://drive.google.com/file/d/171oiPDP52upOWbi9PE8PA5oDNLa01snj/view?usp=drivesdk>
+- **Red Bull-inspired F1 ad v3** — <https://drive.google.com/file/d/1BKlanQvf7eDfBqT-Y0DWhv58J3d65rXZ/view?usp=drivesdk>
+- **Swarovski-inspired jewelry ad** — <https://drive.google.com/file/d/1q2_sA1UbsfUb6HlnG57PqVaNV8tMkIn3/view?usp=drivesdk>
+
 ## Example outputs
 
 These examples show the kinds of intermediate assets OpenFlow produces during a real workflow — not just a single final render.
@@ -102,6 +119,17 @@ This repo ships with companion quality-control skills meant to be used alongside
 - `video-delivery-auditor` — evidence-based QA before claiming completion
 
 Packaged `.skill` files for these companions are included under `dist/`.
+
+## Use cases
+
+OpenFlow works especially well for:
+- short-form ads
+- jewelry and product commercials
+- cinematic teasers
+- talking-head or narrated promos
+- character-consistent story videos
+- before/after transformations
+- multilingual social edits with subtitles
 
 ## Quickstart
 
@@ -214,6 +242,23 @@ This repository is best viewed as:
 
 It is not meant to be a full commercial SaaS or standalone GUI app.
 It is the workflow layer that teaches an agent how to orchestrate the moving parts.
+
+## FAQ
+
+### Does OpenFlow create a passport image first?
+Yes — when continuity matters for a recurring character or product, it creates a passport/reference image first and uses it as the anchor for later shots.
+
+### Does OpenFlow just drop raw 5-second clips into the timeline?
+No. The workflow now biases toward generating slightly longer source clips and then keeping only the strongest ~3 seconds in the final edit for energetic work.
+
+### Does narration have to match what is on screen?
+Yes. The workflow includes explicit narration-to-visual alignment rules, plus preflight/audit checks to reduce mismatches.
+
+### Is ffmpeg really the default now?
+Yes. The workflow is ffmpeg-first for final assembly and rendering. Remotion is optional, not the default.
+
+### Can it prove where music came from?
+Yes. For proof-gated jobs, it can keep create/status/selection artifacts for generated music and block delivery if a required proof chain is missing.
 
 ## Summary
 
