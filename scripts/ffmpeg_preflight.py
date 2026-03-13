@@ -4,6 +4,7 @@ from pathlib import Path
 
 
 DEFAULT_FONT = Path('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf')
+VALID_TARGETS = {'720p', '1080p', '1440p', '4k', '2160p'}
 
 
 def main():
@@ -14,7 +15,12 @@ def main():
     cfg = json.loads((project / 'project.json').read_text())
     problems = []
     overlay_count = 0
+    target_resolution = str(cfg.get('target_resolution', '1080p')).lower()
     segments = cfg.get('timeline_segments') or []
+    if target_resolution not in VALID_TARGETS:
+        problems.append(f'Unsupported target_resolution: {target_resolution}')
+    if target_resolution in {'4k', '2160p'} and len(segments) and not cfg.get('allow_4k_upscale'):
+        problems.append('4K delivery requested but allow_4k_upscale is not enabled')
     if not segments:
         problems.append('No timeline_segments in project.json')
     for seg in segments:
@@ -46,6 +52,7 @@ def main():
         'problems': problems,
         'segment_count': len(segments),
         'overlay_count': overlay_count,
+        'target_resolution': target_resolution,
         'total_timeline_sec': round(sum(float(s.get('duration_sec', 0)) for s in segments), 2)
     }
     print(json.dumps(report, ensure_ascii=False, indent=2))

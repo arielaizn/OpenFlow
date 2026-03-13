@@ -88,9 +88,11 @@ For hard-gated jobs, require these artifacts before delivery:
    - Treat music as incomplete until it is actually wired into the edit/timeline, not just saved as a file
    - Re-check narration timing after music is chosen; if the ending feels under-voiced, shorten the cut or redistribute/add narration instead of leaving dead air by accident
 8. Assemble everything with ffmpeg by default.
-   - Build a timeline config with clips, trims, voice, music, timing, and simple transitions
+   - Build a timeline config with clips, trims, voice, music, timing, simple transitions, and `target_resolution`
    - Use `scripts/ffmpeg_preflight.py <project-dir>` before final render
    - Use `scripts/ffmpeg_assemble.py <project-dir>` to render the final MP4 and any requested subtitle burn-in variant
+   - Default `target_resolution` to `1080p`
+   - Allow `1440p` and `4k` / `2160p` only when the source quality genuinely supports that upscale target
    - Run a real preflight review before final render; do not skip from "assets exist" to delivery
    - For strict workflows, do not render until `delivery-checklist.md`, `edit-plan.md`, `preflight-report.md`, and `logs/animation-selection.md` (when animation applies) exist and the preflight checks pass
    - Final delivery target is 1080p minimum; if the pipeline cannot honestly meet that bar, block delivery instead of bluffing

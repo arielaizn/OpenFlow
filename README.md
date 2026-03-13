@@ -75,6 +75,7 @@ Animation now supports a cost-aware default path: try **Grok image-to-video firs
 ### 8. ffmpeg-first final assembly
 Editing/rendering now defaults to **ffmpeg-based assembly**, not Remotion-first assembly.
 Remotion can still be used intentionally, but it is no longer the default path.
+OpenFlow now supports explicit ffmpeg target resolutions: default **1080p**, with optional **1440p** and **4K** targets when the source quality genuinely justifies that upscale.
 
 ## Core pipeline
 
@@ -296,6 +297,9 @@ Yes — when continuity matters for a recurring character or product, it creates
 
 ### Does OpenFlow just drop raw 5-second clips into the timeline?
 No. The workflow now biases toward generating slightly longer source clips and then keeping only the strongest ~3 seconds in the final edit for energetic work.
+
+### What output resolutions can ffmpeg deliver here?
+ffmpeg can render to multiple target resolutions. In this workflow the default final target is **1080p**, with optional **1440p** and **4K** modes when the source quality justifies it. The workflow should not casually claim 4K if the source material does not support a believable upscale.
 
 ### Does narration have to match what is on screen?
 Yes. The workflow includes explicit narration-to-visual alignment rules, plus preflight/audit checks to reduce mismatches.
