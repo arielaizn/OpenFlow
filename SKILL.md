@@ -20,7 +20,8 @@ Build complete videos from an idea, not just isolated assets.
 
 Use these companion skills alongside this one when relevant:
 - `video-preproduction` to lock concept, shot count, batching, and checklist structure before expensive generation starts.
-- `video-visual-generation` to handle passport/reference images and scene still generation.
+- `video-visual-generation` to handle passport/reference images, 4-variant shot generation, critical still review, prompt correction, and single-frame selection before animation.
+- `video-shot-critic` when a shot needs harsher comparative review, systematic defect detection, or prompt rewrites before anything gets animated.
 - `video-animation-stage` to animate approved stills into raw clips.
 - `video-voice-music-stage` to add Voice Design, narration, and approved music after visuals are mostly locked.
 - `video-ffmpeg-finisher` to assemble, preflight, audit, and render the final cut with ffmpeg.
@@ -52,7 +53,10 @@ For hard-gated jobs, require these artifacts before delivery:
    - Use the nano-banana prompt polishing mindset before generating any image
    - Keep visual continuity across scenes: same subject, wardrobe, colors, environment, lighting language
 4. Generate stills with nano-banana-2.
-   - Create one source image per scene unless the scene truly needs multiple setup options
+   - For each planned shot, generate at least 4 variants before choosing anything
+   - Compare the batch and select exactly 1 winning still per shot
+   - If the whole batch repeats the same distortion or weak composition, rewrite the prompt and regenerate instead of settling
+   - Create one approved source image per scene/shot for animation unless the scene truly needs multiple setup options
 5. Animate stills with Kling via Kie.ai.
    - Use the confirmed model id `kling-3.0/video`
    - Treat the intended workflow as image-to-video
@@ -93,6 +97,8 @@ For hard-gated jobs, require these artifacts before delivery:
 - When the user asks for true animation, be explicit with yourself about the difference between animated clips and still-image motion effects; do not blur that distinction in status updates or final delivery language.
 - Keep one visual language across the whole video.
 - Prefer clear, cinematic shots over noisy prompt soup.
+- Treat repeated defects across a shot batch as a prompt/design failure to fix, not as acceptable model weirdness.
+- Do not move to animation until each shot has one clearly chosen winner.
 - When the user gives a loose concept, invent the shot design yourself.
 - When the user gives tight constraints, follow them exactly.
 - Default to production-ready outputs, not concept-art chaos.
@@ -111,6 +117,8 @@ For each scene, decide:
 - narration line
 - audio mood
 - why the chosen shot visually matches the narration line (if any)
+- what 4-image variant batch will best test the shot before selection
+- what failure patterns would force a prompt rewrite instead of a blind reroll
 
 Good scene prompt shape:
 - subject + action + environment + framing + lighting + style + continuity anchors
