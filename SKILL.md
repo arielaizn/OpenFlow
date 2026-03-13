@@ -6,9 +6,9 @@ description: >-
   user asks to create a full video, ad, teaser, reel, explainer, trailer,
   music-backed short, or talking/voice-led visual pipeline from an idea or script.
   Especially use when the workflow should turn a rough concept into a shot list,
-  generate polished prompts for nano-banana-2 image creation, animate scenes with
-  Kling via Kie.ai, generate narration and sound with ElevenLabs, optionally
-  source or generate music including Suno/Kie when available, and assemble the
+  generate polished prompts for nano-banana-2 image creation, batch-generate still variants,
+  animate scenes through Grok or Kling via Kie.ai, generate narration and sound with ElevenLabs,
+  optionally source or generate music including Suno/Kie when available, and assemble the
   final edit with ffmpeg.
 ---
 
@@ -54,18 +54,24 @@ For hard-gated jobs, require these artifacts before delivery:
    - Keep visual continuity across scenes: same subject, wardrobe, colors, environment, lighting language
 4. Generate stills with nano-banana-2.
    - For each planned shot, generate at least 4 variants before choosing anything
+   - Prefer submitting the 4-variant set as one batch/run rather than serial one-by-one generation
    - Compare the batch and select exactly 1 winning still per shot
    - If the whole batch repeats the same distortion or weak composition, rewrite the prompt and regenerate instead of settling
    - Create one approved source image per scene/shot for animation unless the scene truly needs multiple setup options
-5. Animate stills with Kling via Kie.ai.
-   - Use the confirmed model id `kling-3.0/video`
-   - Treat the intended workflow as image-to-video
-   - Upload each scene still to a temporary public URL first, then use that image URL as the reference input
-   - Default each animated raw shot to about 5 seconds unless the user asks otherwise
-   - Do not assume the full generated 5 seconds should stay in the final cut; for energetic edits, prefer trimming each shot down to about 3 strong seconds on the timeline unless a hero moment deserves longer
+5. Animate stills through Kie.ai, using Grok first and Kling as fallback.
+   - Default first pass: `grok-imagine/image-to-video`
+   - Upload each approved scene still to a temporary public URL first, then use that image URL as the reference input
+   - Default Grok settings unless the brief says otherwise: `mode: normal`, `duration: "6"`, `resolution: "480p"`
+   - Review the Grok result before accepting it
+   - If Grok passes, upscale it through `grok-imagine/upscale` using the Grok task id and keep the upscaled result
+   - If Grok shows face/body distortion, broken or jittery motion, melted details, identity loss, or looks too visibly AI-generated for ad use, reject it and retry the same approved still in Kling
+   - Kling fallback model id: `kling-3.0/video`
+   - For Kling fallback, treat the intended workflow as image-to-video
+   - Default each animated raw shot to about 5-6 seconds unless the user asks otherwise
+   - Do not assume the full generated clip should stay in the final cut; for energetic edits, prefer trimming each shot down to about 3 strong seconds on the timeline unless a hero moment deserves longer
    - Use 9:16 or 16:9, not square, for video outputs
    - Put camera movement, motion feel, pacing, and animation intent directly into the animation prompt
-   - Use `mode: std` for tests and `mode: pro` for final output when appropriate
+   - Use Kling `mode: std` for tests and `mode: pro` for fallback final output when appropriate
    - Enable multishot only when it clearly improves the scene instead of adding randomness
    - Prefer one clear motion idea per shot
 6. Design voices and generate narration with ElevenLabs.
@@ -195,6 +201,7 @@ Use these bundled resources when doing the work:
 - `scripts/ffmpeg_assemble.py` — build trimmed segment files, stitch them, mix narration/music, burn subtitles when requested, and render final MP4
 - `references/workflow.md` — detailed decision flow for full video creation
 - `references/prompt-patterns.md` — prompt patterns for scene, motion, narration, and music intent
+- `references/grok-kie.md` — Grok image-to-video first-pass defaults, upscale flow, and quality-fail triggers for Kling fallback
 - `references/kling-kie.md` — confirmed Kie.ai Kling model name, create/poll flow, and currently known payload limits
 - `references/music-generation.md` — Kie V5 music generation defaults, sourcing fallback rules, and ending/narration integration checks
 - `references/narration-visual-alignment.md` — rules for making the on-screen shot match the narration line while it is spoken
@@ -215,4 +222,5 @@ Unless the user specifies otherwise:
 Kie.ai model-specific payloads can vary by model/version.
 - Reuse the generic job client for create + poll
 - Confirm the exact model name and input fields before shipping a production automation if they were not provided in the request or references
+- When Grok docs are available and confirmed, prefer Grok as the default first-pass animation path and reserve Kling for fallback quality recovery
 - Keep model-specific options in project config files rather than hardcoding assumptions deep in the flow

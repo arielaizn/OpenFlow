@@ -26,7 +26,7 @@ It is built for real end-to-end production workflows where one agent coordinates
 
 - **Default editor/renderer:** ffmpeg
 - **Image generation:** Kie.ai / nano-banana-2
-- **Animation:** Kling via Kie.ai
+- **Animation:** Grok via Kie.ai first, Kling fallback when needed
 - **Voice:** ElevenLabs + Voice Design
 - **Music:** Kie/Suno or other configured paths when explicitly allowed
 - **Consistency system:** passport/reference-first workflow
@@ -48,10 +48,14 @@ It is a production workflow for taking a loose request like:
 If a recurring character or product matters, OpenFlow creates a clean passport-style reference image first, then reuses it to anchor later shots.
 
 ### 2. Editing judgment, not just asset dumping
-Generated 5-second clips are treated as **source material**, not automatically final timeline lengths.
+Generated clips are treated as **source material**, not automatically final timeline lengths.
 Energetic edits usually keep only the strongest **~3 seconds** of each shot.
 
-### 3. Narration must match the shot
+### 3. Multi-variant shot selection before animation
+Each planned shot now generates at least **4 still variants in a batch**, then one winner is chosen before animation.
+If the whole batch repeats the same flaw, the workflow rewrites the prompt and regenerates instead of blindly moving on.
+
+### 4. Narration must match the shot
 If the voiceover mentions a concrete thing or event, the concurrent visual should show that thing, its consequence, or an obvious supporting visual.
 
 ### 4. Proof-gated workflow
@@ -61,7 +65,10 @@ OpenFlow supports hard-gated artifacts before delivery:
 - `preflight-report.md`
 - `delivery-audit.md`
 
-### 5. ffmpeg-first final assembly
+### 5. Grok-first animation with Kling fallback
+Animation now supports a cost-aware default path: try **Grok image-to-video first**, upscale successful Grok results, and fall back to **Kling** when Grok output has visible distortion, jitter, identity loss, or other ad-breaking artifacts.
+
+### 6. ffmpeg-first final assembly
 Editing/rendering now defaults to **ffmpeg-based assembly**, not Remotion-first assembly.
 Remotion can still be used intentionally, but it is no longer the default path.
 
@@ -74,9 +81,9 @@ Remotion can still be used intentionally, but it is no longer the default path.
 3. **Create a passport/reference image**
    - if a recurring character/product needs continuity
 4. **Generate scene stills**
-   - polished prompts + Kie image generation
+   - polished prompts + Kie image generation, with at least 4 variants per planned shot
 5. **Animate scenes**
-   - Kling image-to-video clips
+   - Grok image-to-video first, upscale if it passes, then Kling fallback if quality is not good enough
 6. **Design voice + render narration**
    - ElevenLabs Voice Design when appropriate
 7. **Generate or attach music**
