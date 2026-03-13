@@ -62,12 +62,14 @@ For hard-gated jobs, require these artifacts before delivery:
    - Default first pass: `grok-imagine/image-to-video`
    - Upload each approved scene still to a temporary public URL first, then use that image URL as the reference input
    - Default Grok settings unless the brief says otherwise: `mode: normal`, `duration: "6"`, `resolution: "720p"`
+   - Treat Grok first-pass raw shot length as 6 seconds by default
    - Review the Grok result before accepting it
    - If Grok passes, upscale it through `grok-imagine/upscale` using the Grok task id and keep the upscaled result
    - If Grok shows face/body distortion, broken or jittery motion, melted details, identity loss, or looks too visibly AI-generated for ad use, reject it and retry the same approved still in Kling
    - Kling fallback model id: `kling-3.0/video`
    - For Kling fallback, treat the intended workflow as image-to-video
-   - Default each animated raw shot to about 5-6 seconds unless the user asks otherwise
+   - Default Grok raw shots to 6 seconds unless the user asks otherwise
+   - Default Kling fallback raw shots to about 5 seconds unless the user asks otherwise
    - Do not assume the full generated clip should stay in the final cut; for energetic edits, prefer trimming each shot down to about 3 strong seconds on the timeline unless a hero moment deserves longer
    - Use 9:16 or 16:9, not square, for video outputs
    - Put camera movement, motion feel, pacing, and animation intent directly into the animation prompt

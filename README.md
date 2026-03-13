@@ -70,7 +70,7 @@ OpenFlow supports hard-gated artifacts before delivery:
 - `logs/animation-selection.md` when animation is part of the workflow
 
 ### 7. Grok-first animation with Kling fallback
-Animation now supports a cost-aware default path: try **Grok image-to-video first**, upscale successful Grok results, and fall back to **Kling** when Grok output has visible distortion, jitter, identity loss, or other ad-breaking artifacts. The docs do not state a confirmed numeric ceiling for Grok upscale output, so the workflow treats **1080p final delivery** as the hard requirement instead of bluffing a source-upscale guarantee.
+Animation now supports a cost-aware default path: try **Grok image-to-video first** at a default raw length of **6 seconds**, upscale successful Grok results, and fall back to **Kling** at about **5 seconds** when Grok output has visible distortion, jitter, identity loss, or other ad-breaking artifacts. The docs do not state a confirmed numeric ceiling for Grok upscale output, so the workflow treats **1080p final delivery** as the hard requirement instead of bluffing a source-upscale guarantee.
 
 ### 8. ffmpeg-first final assembly
 Editing/rendering now defaults to **ffmpeg-based assembly**, not Remotion-first assembly.

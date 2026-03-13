@@ -87,6 +87,7 @@ Use this honest policy instead:
 Unless the brief says otherwise:
 - try Grok first for cost efficiency
 - use `duration: "6"`
+- treat 6 seconds as the default Grok shot length, distinct from Kling's shorter fallback default
 - use `resolution: "720p"` for the first Grok pass by default
 - upscale successful Grok outputs to the maximum available documented path through `grok-imagine/upscale`
 - require final delivery at `1080p` or better
