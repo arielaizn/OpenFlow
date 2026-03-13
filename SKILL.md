@@ -20,7 +20,7 @@ Build complete videos from an idea, not just isolated assets.
 
 Use these companion skills alongside this one when relevant:
 - `video-preproduction` to lock concept, shot count, batching, and checklist structure before expensive generation starts.
-- `video-visual-generation` to handle passport/reference images, 4-variant shot generation, critical still review, prompt correction, and single-frame selection before animation.
+- `video-visual-generation` to handle passport/reference images for people or products/objects, 4-variant shot generation, critical still review, prompt correction, and single-frame selection before animation.
 - `video-shot-critic` when a shot needs harsher comparative review, systematic defect detection, or prompt rewrites before anything gets animated.
 - `video-animation-stage` to animate approved stills into raw clips.
 - `video-voice-music-stage` to add Voice Design, narration, and approved music after visuals are mostly locked.
@@ -139,11 +139,12 @@ Good Kling motion prompt shape:
 
 ## Consistency rules
 
-If a character/product/place recurs across scenes:
-- first create a clean white-background "passport" reference image for that recurring character before generating story scenes
+If a character/product/place/object recurs across scenes:
+- first create a clean white-background "passport" reference image for that recurring visual subject before generating story scenes
+- the passport subject can be a person, product, bottle, prop, object, vehicle, or other repeating hero subject
 - use that passport image as the anchor reference for later image generation
 - repeat defining traits in every prompt
-- repeat wardrobe/material/color anchors
+- repeat wardrobe/material/color/material/form anchors when relevant
 - repeat camera/lens language when needed
 - avoid introducing new props unless the story requires them
 

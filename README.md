@@ -45,7 +45,7 @@ It is a production workflow for taking a loose request like:
 ## What makes it strong
 
 ### 1. Continuity first
-If a recurring character or product matters, OpenFlow creates a clean passport-style reference image first, then reuses it to anchor later shots.
+If a recurring character, product, bottle, or other hero object matters, OpenFlow creates a clean passport-style reference image first, then reuses it to anchor later shots.
 
 ### 2. Editing judgment, not just asset dumping
 Generated clips are treated as **source material**, not automatically final timeline lengths.
