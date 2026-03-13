@@ -30,7 +30,7 @@ It is built for real end-to-end production workflows where one agent coordinates
 - **Voice:** ElevenLabs + Voice Design
 - **Music:** Kie/Suno or other configured paths when explicitly allowed
 - **Consistency system:** passport/reference-first workflow
-- **Quality control:** requirements guard, edit-direction, preflight, and delivery audit
+- **Quality control:** requirements guard, shot-selection logs, animation-selection logs, preflight, and delivery audit
 
 ## Why OpenFlow exists
 
@@ -58,17 +58,21 @@ If the whole batch repeats the same flaw, the workflow rewrites the prompt and r
 ### 4. Narration must match the shot
 If the voiceover mentions a concrete thing or event, the concurrent visual should show that thing, its consequence, or an obvious supporting visual.
 
-### 4. Proof-gated workflow
+### 5. Animation decision logging
+OpenFlow now keeps an animation decision trail so each shot can record whether Grok passed, whether upscale was attempted, whether Kling fallback was required, and why the final clip was accepted.
+
+### 6. Proof-gated workflow
 OpenFlow supports hard-gated artifacts before delivery:
 - `delivery-checklist.md`
 - `edit-plan.md`
 - `preflight-report.md`
 - `delivery-audit.md`
+- `logs/animation-selection.md` when animation is part of the workflow
 
-### 5. Grok-first animation with Kling fallback
-Animation now supports a cost-aware default path: try **Grok image-to-video first**, upscale successful Grok results, and fall back to **Kling** when Grok output has visible distortion, jitter, identity loss, or other ad-breaking artifacts.
+### 7. Grok-first animation with Kling fallback
+Animation now supports a cost-aware default path: try **Grok image-to-video first**, upscale successful Grok results, and fall back to **Kling** when Grok output has visible distortion, jitter, identity loss, or other ad-breaking artifacts. The docs do not state a confirmed numeric ceiling for Grok upscale output, so the workflow treats **1080p final delivery** as the hard requirement instead of bluffing a source-upscale guarantee.
 
-### 6. ffmpeg-first final assembly
+### 8. ffmpeg-first final assembly
 Editing/rendering now defaults to **ffmpeg-based assembly**, not Remotion-first assembly.
 Remotion can still be used intentionally, but it is no longer the default path.
 

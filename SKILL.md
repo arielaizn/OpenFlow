@@ -61,7 +61,7 @@ For hard-gated jobs, require these artifacts before delivery:
 5. Animate stills through Kie.ai, using Grok first and Kling as fallback.
    - Default first pass: `grok-imagine/image-to-video`
    - Upload each approved scene still to a temporary public URL first, then use that image URL as the reference input
-   - Default Grok settings unless the brief says otherwise: `mode: normal`, `duration: "6"`, `resolution: "480p"`
+   - Default Grok settings unless the brief says otherwise: `mode: normal`, `duration: "6"`, `resolution: "720p"`
    - Review the Grok result before accepting it
    - If Grok passes, upscale it through `grok-imagine/upscale` using the Grok task id and keep the upscaled result
    - If Grok shows face/body distortion, broken or jittery motion, melted details, identity loss, or looks too visibly AI-generated for ad use, reject it and retry the same approved still in Kling
@@ -92,7 +92,8 @@ For hard-gated jobs, require these artifacts before delivery:
    - Use `scripts/ffmpeg_preflight.py <project-dir>` before final render
    - Use `scripts/ffmpeg_assemble.py <project-dir>` to render the final MP4 and any requested subtitle burn-in variant
    - Run a real preflight review before final render; do not skip from "assets exist" to delivery
-   - For strict workflows, do not render until `delivery-checklist.md`, `edit-plan.md`, and `preflight-report.md` exist and the preflight checks pass
+   - For strict workflows, do not render until `delivery-checklist.md`, `edit-plan.md`, `preflight-report.md`, and `logs/animation-selection.md` (when animation applies) exist and the preflight checks pass
+   - Final delivery target is 1080p minimum; if the pipeline cannot honestly meet that bar, block delivery instead of bluffing
    - If the user explicitly asked for real animation, do not treat a still-motion / Ken Burns style fallback as equivalent completion; only count the animation requirement as satisfied when actual animated clips were produced by Kling or another real animation stage
 
 ## Creative operating rules
@@ -185,6 +186,7 @@ Default deliverables:
 - `edit-plan.md`
 - `preflight-report.md`
 - `delivery-audit.md`
+- `logs/animation-selection.md` when animation is part of the workflow
 
 Optional deliverables:
 - captions/subtitles

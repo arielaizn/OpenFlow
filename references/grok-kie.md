@@ -71,11 +71,23 @@ When this happens:
 2. keep the same approved still
 3. retry animation in Kling instead of forcing Grok through
 
+## Resolution truthfulness
+
+The provided docs confirm Grok image-to-video input options of `480p` and `720p`, but they do **not** state an exact numeric maximum output resolution for `grok-imagine/upscale`.
+
+So do not claim a confirmed Grok-upscale ceiling that the docs do not provide.
+Use this honest policy instead:
+- treat `720p` as the highest documented Grok generation input resolution
+- run `grok-imagine/upscale` on successful Grok outputs
+- require the **final delivered render** to be at least `1080p`
+- if the workflow cannot produce a believable 1080p final deliverable, block delivery instead of pretending the source upscale guarantees it
+
 ## Default operating preference
 
 Unless the brief says otherwise:
 - try Grok first for cost efficiency
 - use `duration: "6"`
-- use `resolution: "480p"` for the first Grok pass unless quality requirements clearly justify more
-- upscale successful Grok outputs to the maximum available path through `grok-imagine/upscale`
+- use `resolution: "720p"` for the first Grok pass by default
+- upscale successful Grok outputs to the maximum available documented path through `grok-imagine/upscale`
+- require final delivery at `1080p` or better
 - use Kling as fallback when Grok quality is not good enough
